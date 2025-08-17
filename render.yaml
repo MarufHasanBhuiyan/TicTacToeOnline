@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: worker  # Changed from 'web' to 'worker'
     name: tictactoe
     plan: free
     dockerfilePath: Dockerfile

@@ -27,6 +27,18 @@ BUTTON_COLOR = (46, 204, 113)  # Emerald Green
 REMOVE_COLOR = (241, 196, 15)  # Sunflower Yellow
 HOVER_COLOR = (52, 152, 219)  # Peter River Blue
 
+# Sound initialization with dummy fallbacks
+try:
+    pygame.mixer.init()
+    click_sound = pygame.mixer.Sound('click.wav') if os.path.exists('click.wav') else pygame.mixer.Sound(buffer=bytearray(44))
+    win_sound = pygame.mixer.Sound('win.wav') if os.path.exists('win.wav') else pygame.mixer.Sound(buffer=bytearray(44))
+    draw_sound = pygame.mixer.Sound('draw.wav') if os.path.exists('draw.wav') else pygame.mixer.Sound(buffer=bytearray(44))
+    if os.path.exists('background.mp3'):
+        pygame.mixer.music.load('background.mp3')
+except:
+    # Silent fallback
+    pass
+
 # Load sounds
 try:
     click_sound = mixer.Sound('click.wav')
