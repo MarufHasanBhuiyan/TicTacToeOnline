@@ -1,3 +1,5 @@
+import os
+os.environ["SDL_VIDEODRIVER"] = "dummy"  # Critical for Render.com
 import pygame
 import sys
 import math
