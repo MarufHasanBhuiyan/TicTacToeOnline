@@ -1,5 +1,6 @@
 import os
 os.environ["SDL_VIDEODRIVER"] = "dummy"  # Critical for Render.com
+os.environ["SDL_AUDIODRIVER"] = "dummy"  # New line
 import pygame
 import sys
 import math

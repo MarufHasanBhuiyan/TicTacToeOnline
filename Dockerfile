@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Configure headless Pygame
 ENV SDL_VIDEODRIVER=dummy
+ENV SDL_AUDIODRIVER=dummy
 ENV PYTHONUNBUFFERED=1
 
 # Set up working directory
