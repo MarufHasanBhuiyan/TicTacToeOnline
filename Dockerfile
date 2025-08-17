@@ -1,22 +1,26 @@
-# Use Python 3.9 (last version fully compatible with Pygame)
-FROM python:3.9-slim
+# Use Python 3.9 with SDL support
+FROM python:3.9-bullseye
 
-# Install SDL2 dependencies (critical for Pygame)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libsdl2-dev \
     libsdl2-image-dev \
     libsdl2-mixer-dev \
     libsdl2-ttf-dev \
+    libfreetype6-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Set up dummy display for Pygame
+# Configure headless Pygame
 ENV SDL_VIDEODRIVER=dummy
+ENV PYTHONUNBUFFERED=1
 
-# Copy and install requirements
+# Set up working directory
 WORKDIR /app
+
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy and run the app
+# Copy and run app
 COPY . .
 CMD ["python", "app.py"]

@@ -2,4 +2,4 @@ services:
   - type: web
     name: tictactoe
     plan: free
-    dockerfilePath: Dockerfile  # Point to your Dockerfile
+    dockerfilePath: Dockerfile
